@@ -27,6 +27,6 @@ public class Author {
     @OneToMany(mappedBy = "mainAuthor")
     private List<Book> booksAsMainAuthor;
 
-    @ManyToMany(mappedBy = "coAuthor")
+    @ManyToMany(mappedBy = "coAuthors")
     private  List<Book> booksAsCoAuthor;
 }
