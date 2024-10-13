@@ -16,13 +16,13 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;
 
     private String edition;
 
-    private int releaseYear;
+    private Integer releaseYear;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
