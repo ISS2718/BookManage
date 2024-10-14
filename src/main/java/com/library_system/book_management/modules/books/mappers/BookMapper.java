@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 public class BookMapper {
     public RecoveryBookDto mapBookToRecoveryBookDto(@NonNull Book book) {
         return new RecoveryBookDto(
-                book.getId(),
-                book.getTitle(),
-                book.getEdition(),
-                book.getReleaseYear(),
-                Optional.ofNullable(book.getMainAuthor()).map(Author::getFullName).orElse(null),
-                Optional.ofNullable(book.getCoAuthors()).orElse(Collections.emptyList()).stream().map(Author::getFullName).collect(Collectors.toList()),
-                book.getState()
+            book.getId(),
+            book.getTitle(),
+            book.getEdition(),
+            book.getReleaseYear(),
+            Optional.ofNullable(book.getMainAuthor()).map(Author::getFullName).orElse(null),
+            Optional.ofNullable(book.getCoAuthors()).orElse(Collections.emptyList()).stream().map(Author::getFullName).collect(Collectors.toList()),
+            book.getState()
         );
     }
 }
