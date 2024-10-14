@@ -1,4 +1,4 @@
-package com.library_system.book_management.modules.books.mapers;
+package com.library_system.book_management.modules.books.mappers;
 
 import com.library_system.book_management.modules.authors.entities.Author;
 import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
