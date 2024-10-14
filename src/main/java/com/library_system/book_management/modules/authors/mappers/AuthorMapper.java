@@ -1,6 +1,5 @@
 package com.library_system.book_management.modules.authors.mappers;
 
-import com.library_system.book_management.modules.authors.dtos.CreateAuthorsDto;
 import com.library_system.book_management.modules.authors.dtos.RecoveryAuthorDto;
 import com.library_system.book_management.modules.authors.entities.Author;
 import com.library_system.book_management.modules.books.entities.Book;

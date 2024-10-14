@@ -1,6 +1,6 @@
 package com.library_system.book_management.modules.authors.services;
 
-import com.library_system.book_management.modules.authors.dtos.CreateAuthorsDto;
+import com.library_system.book_management.modules.authors.dtos.CreateAuthorDto;
 import com.library_system.book_management.modules.authors.dtos.RecoveryAuthorDto;
 import com.library_system.book_management.modules.authors.entities.Author;
 import com.library_system.book_management.modules.authors.mappers.AuthorMapper;
@@ -37,5 +37,24 @@ public class AuthorService {
         Optional<Author> a = authorRepository.findById(id);
 
         return a.map(authorMapper::mapAuthorToRecoveryAuthorDto);
+    }
+    public RecoveryAuthorDto createAuthor(@NonNull CreateAuthorDto createAuthorDto) {
+        Author newAuthor = Author.builder()
+                .fullName(createAuthorDto.fullName())
+                .abbreviationName(createAuthorDto.abbreviationName())
+                .birthday(createAuthorDto.birthday())
+                .build();
+
+        Author savedAuthor = authorRepository.save(newAuthor);
+
+//        if (createAuthorDto.booksAsMainAuthor() != null && !createAuthorDto.booksAsMainAuthor().isEmpty()) {
+//
+//        }
+
+//        if (createAuthorDto.booksAsCoAuthor() != null && !createAuthorDto.booksAsCoAuthor().isEmpty()) {
+//
+//        }
+
+        return authorMapper.mapAuthorToRecoveryAuthorDto(savedAuthor);
     }
 }
