@@ -71,4 +71,40 @@ public class BookService {
 
         return bookMapper.mapBookToRecoveryBookDto(savedBook);
     }
+
+    public RecoveryBookDto updateBook(@NonNull Long id, @NonNull UpdateBookDto updateBookDto) {
+        Book b = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+
+        if(updateBookDto.title() != null) {
+            b.setTitle(updateBookDto.title());
+        }
+
+        if(updateBookDto.edition() != null) {
+            b.setEdition(updateBookDto.edition());
+        }
+
+        if(updateBookDto.releaseYear() != null) {
+            b.setReleaseYear(updateBookDto.releaseYear());
+        }
+
+        // This make BD inconsistent. Because updadte book entity, but not the old main Author Entity.
+        if(updateBookDto.mainAuthor() != null) {
+            RecoveryAuthorDto newMainAuthor = authorService.getAuthorByFullName(updateBookDto.mainAuthor()).orElseThrow(() -> new RuntimeException("Auhtor not found"));
+
+            b.setMainAuthor(authorMapper.mapRecoveryAuthorDtoToAuthor(newMainAuthor));
+        }
+
+        // This make BD inconsistent. Because updadte book entity, but not the olds coAuthors Entities.
+        if(updateBookDto.coAuthors() != null) {
+            List<RecoveryAuthorDto> coAuhtorsList = updateBookDto.coAuthors().stream()
+                    .map(coAuthor -> authorService.getAuthorByFullName(coAuthor)
+                            .orElseThrow(() -> new RuntimeException("Auhtor not found")))
+                    .toList();
+            b.setCoAuthors(coAuhtorsList.stream().map(coAuthor -> authorMapper.mapRecoveryAuthorDtoToAuthor(coAuthor)).collect(Collectors.toList()));
+        }
+
+        b.setState(updateBookDto.state());
+
+        return bookMapper.mapBookToRecoveryBookDto(bookRepository.save(b));
+    }
 }

@@ -2,6 +2,7 @@ package com.library_system.book_management.modules.books.controllers;
 
 import com.library_system.book_management.modules.books.dtos.CreateBookDto;
 import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
+import com.library_system.book_management.modules.books.dtos.UpdateBookDto;
 import com.library_system.book_management.modules.books.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,5 +41,10 @@ public class BookController {
                 .collect(Collectors.toList()),
                 HttpStatus.CREATED
         );
+    }
+
+    @PutMapping(value = "/{id}")
+    public  ResponseEntity<RecoveryBookDto> updateBook(@PathVariable Long id, @RequestBody UpdateBookDto updateBookDto) {
+        return ResponseEntity.ok(bookService.updateBook(id,updateBookDto));
     }
 }
