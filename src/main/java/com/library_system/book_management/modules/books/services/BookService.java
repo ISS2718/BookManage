@@ -107,4 +107,10 @@ public class BookService {
 
         return bookMapper.mapBookToRecoveryBookDto(bookRepository.save(b));
     }
+
+    public void deleteBookById(@NonNull Long id) {
+        if(!bookRepository.existsById(id)) throw new RuntimeException("Book not found");
+
+        bookRepository.deleteById(id);
+    }
 }
