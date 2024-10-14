@@ -34,8 +34,8 @@ public class AuthorController {
     }
 
     @PostMapping("/list")
-    public ResponseEntity<List<RecoveryAuthorDto>> createAuthors(@RequestBody List<CreateAuthorDto> listCreateAuthorDto) {
-        return new ResponseEntity<>(listCreateAuthorDto.stream()
+    public ResponseEntity<List<RecoveryAuthorDto>> createAuthors(@RequestBody List<CreateAuthorDto> createAuthorDtoList) {
+        return new ResponseEntity<>(createAuthorDtoList.stream()
                     .map(create -> authorService.createAuthor(create))
                     .collect(Collectors.toList()),
                     HttpStatus.CREATED
