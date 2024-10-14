@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -22,7 +22,7 @@ public class Author {
 
     private String abbreviationName;
 
-    private Date birthday;
+    private LocalDate birthday;
 
     @OneToMany(mappedBy = "mainAuthor")
     private List<Book> booksAsMainAuthor;
