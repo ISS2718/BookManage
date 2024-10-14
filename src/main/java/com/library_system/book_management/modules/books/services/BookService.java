@@ -1,8 +1,11 @@
 package com.library_system.book_management.modules.books.services;
 
+import com.library_system.book_management.modules.authors.dtos.RecoveryAuthorDto;
+import com.library_system.book_management.modules.authors.mappers.AuthorMapper;
 import com.library_system.book_management.modules.authors.services.AuthorService;
 import com.library_system.book_management.modules.books.dtos.CreateBookDto;
 import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
+import com.library_system.book_management.modules.books.dtos.UpdateBookDto;
 import com.library_system.book_management.modules.books.entities.Book;
 import com.library_system.book_management.modules.books.mappers.BookMapper;
 import com.library_system.book_management.modules.books.repositories.BookRepository;
@@ -19,12 +22,14 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    // Generate a Circular Dependency
-//    @Autowired
-//    private AuthorService authorService;
+    @Autowired
+    private AuthorService authorService;
 
     @Autowired
     private BookMapper bookMapper;
+
+    @Autowired
+    private AuthorMapper authorMapper;
 
     public List<RecoveryBookDto> getBooks() {
         List<Book> books = bookRepository.findAll();
@@ -36,6 +41,12 @@ public class BookService {
 
     public Optional<RecoveryBookDto> getBookById(Long id) {
         Optional<Book> b = bookRepository.findById(id);
+
+        return b.map(bookMapper::mapBookToRecoveryBookDto);
+    }
+
+    public Optional<RecoveryBookDto> getBookByTitle(@NonNull String title) {
+        Optional<Book> b = bookRepository.findByTitle(title);
 
         return b.map(bookMapper::mapBookToRecoveryBookDto);
     }

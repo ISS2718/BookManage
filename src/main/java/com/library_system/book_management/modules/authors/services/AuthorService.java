@@ -19,6 +19,7 @@ public class AuthorService {
     @Autowired
     AuthorRepository authorRepository;
 
+
     @Autowired
     BookService bookService;
 
@@ -38,6 +39,13 @@ public class AuthorService {
 
         return a.map(authorMapper::mapAuthorToRecoveryAuthorDto);
     }
+
+    public Optional<RecoveryAuthorDto> getAuthorByFullName(@NonNull String fullName) {
+        Optional<Author> a = authorRepository.findByFullName(fullName);
+
+        return a.map(authorMapper::mapAuthorToRecoveryAuthorDto);
+    }
+
     public RecoveryAuthorDto createAuthor(@NonNull CreateAuthorDto createAuthorDto) {
         Author newAuthor = Author.builder()
                 .fullName(createAuthorDto.fullName())
