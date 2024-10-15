@@ -2,6 +2,7 @@ package com.library_system.book_management.modules.authors.controllers;
 
 import com.library_system.book_management.modules.authors.dtos.CreateAuthorDto;
 import com.library_system.book_management.modules.authors.dtos.RecoveryAuthorDto;
+import com.library_system.book_management.modules.authors.dtos.UpdateAuthorDto;
 import com.library_system.book_management.modules.authors.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,11 @@ public class AuthorController {
                     .collect(Collectors.toList()),
                     HttpStatus.CREATED
         );
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<RecoveryAuthorDto> updateAuthor(@PathVariable Long id, @RequestBody UpdateAuthorDto updateAuthorDto) {
+        return ResponseEntity.ok(authorService.updateAuthor(id, updateAuthorDto));
     }
 
     @DeleteMapping("/{id}")
