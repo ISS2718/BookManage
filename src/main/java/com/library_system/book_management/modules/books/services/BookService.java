@@ -73,7 +73,7 @@ public class BookService {
     }
 
     public RecoveryBookDto updateBook(@NonNull Long id, @NonNull UpdateBookDto updateBookDto) {
-        Book b = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        Book b = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found: " + id));
 
         if(updateBookDto.title() != null) {
             b.setTitle(updateBookDto.title());
@@ -87,18 +87,18 @@ public class BookService {
             b.setReleaseYear(updateBookDto.releaseYear());
         }
 
-        // This make BD inconsistent. Because updadte book entity, but not the old main Author Entity.
+        // This make BD inconsistent. Because update book entity, but not the old main Author Entity.
         if(updateBookDto.mainAuthor() != null) {
-            RecoveryAuthorDto newMainAuthor = authorService.getAuthorByFullName(updateBookDto.mainAuthor()).orElseThrow(() -> new RuntimeException("Auhtor not found"));
+            RecoveryAuthorDto newMainAuthor = authorService.getAuthorByFullName(updateBookDto.mainAuthor()).orElseThrow(() -> new RuntimeException("Main author not found: " + updateBookDto.mainAuthor()));
 
             b.setMainAuthor(authorMapper.mapRecoveryAuthorDtoToAuthor(newMainAuthor));
         }
 
-        // This make BD inconsistent. Because updadte book entity, but not the olds coAuthors Entities.
+        // This make BD inconsistent. Because update book entity, but not the olds coAuthors Entities.
         if(updateBookDto.coAuthors() != null) {
             List<RecoveryAuthorDto> coAuhtorsList = updateBookDto.coAuthors().stream()
                     .map(coAuthor -> authorService.getAuthorByFullName(coAuthor)
-                            .orElseThrow(() -> new RuntimeException("Auhtor not found")))
+                            .orElseThrow(() -> new RuntimeException("Co-author not found: " + coAuthor)))
                     .toList();
             b.setCoAuthors(coAuhtorsList.stream().map(coAuthor -> authorMapper.mapRecoveryAuthorDtoToAuthor(coAuthor)).collect(Collectors.toList()));
         }
