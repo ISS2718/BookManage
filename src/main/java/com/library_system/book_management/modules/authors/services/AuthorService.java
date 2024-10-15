@@ -65,4 +65,10 @@ public class AuthorService {
 
         return authorMapper.mapAuthorToRecoveryAuthorDto(savedAuthor);
     }
+
+    public void deleteAuthorById(Long id) {
+        if(!authorRepository.existsById(id)) throw new RuntimeException("Author not found");
+
+        authorRepository.deleteById(id);
+    }
 }
