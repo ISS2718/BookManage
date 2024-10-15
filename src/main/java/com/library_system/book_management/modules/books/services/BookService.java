@@ -89,7 +89,8 @@ public class BookService {
 
         // This make BD inconsistent. Because update book entity, but not the old main Author Entity.
         if(updateBookDto.mainAuthor() != null) {
-            RecoveryAuthorDto newMainAuthor = authorService.getAuthorByFullName(updateBookDto.mainAuthor()).orElseThrow(() -> new RuntimeException("Main author not found: " + updateBookDto.mainAuthor()));
+            RecoveryAuthorDto newMainAuthor = authorService.getAuthorByFullName(updateBookDto.mainAuthor())
+                    .orElseThrow(() -> new RuntimeException("Main author not found: " + updateBookDto.mainAuthor()));
 
             b.setMainAuthor(authorMapper.mapRecoveryAuthorDtoToAuthor(newMainAuthor));
         }
@@ -100,7 +101,8 @@ public class BookService {
                     .map(coAuthor -> authorService.getAuthorByFullName(coAuthor)
                             .orElseThrow(() -> new RuntimeException("Co-author not found: " + coAuthor)))
                     .toList();
-            b.setCoAuthors(coAuhtorsList.stream().map(coAuthor -> authorMapper.mapRecoveryAuthorDtoToAuthor(coAuthor)).collect(Collectors.toList()));
+            b.setCoAuthors(coAuhtorsList.stream().map(coAuthor -> authorMapper.mapRecoveryAuthorDtoToAuthor(coAuthor))
+                    .collect(Collectors.toList()));
         }
 
         b.setState(updateBookDto.state());
