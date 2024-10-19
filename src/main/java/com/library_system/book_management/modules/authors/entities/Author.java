@@ -1,6 +1,6 @@
 package com.library_system.book_management.modules.authors.entities;
 
-import com.library_system.book_management.modules.books.entities.Book;
+import com.library_system.book_management.modules.entities.Book;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

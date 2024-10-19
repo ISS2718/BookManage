@@ -1,6 +1,6 @@
-package com.library_system.book_management.modules.books.repositories;
+package com.library_system.book_management.modules.repositories;
 
-import com.library_system.book_management.modules.books.entities.Book;
+import com.library_system.book_management.modules.entities.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

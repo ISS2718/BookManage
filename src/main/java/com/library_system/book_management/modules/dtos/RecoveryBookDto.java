@@ -1,7 +1,6 @@
-package com.library_system.book_management.modules.books.dtos;
+package com.library_system.book_management.modules.dtos;
 
-import com.library_system.book_management.modules.books.enums.BookState;
-import lombok.Builder;
+import com.library_system.book_management.modules.enums.BookState;
 import org.springframework.lang.Nullable;
 
 import java.util.List;
