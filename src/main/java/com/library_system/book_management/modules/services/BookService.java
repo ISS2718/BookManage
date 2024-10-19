@@ -1,14 +1,14 @@
-package com.library_system.book_management.modules.books.services;
+package com.library_system.book_management.modules.services;
 
 import com.library_system.book_management.modules.authors.dtos.RecoveryAuthorDto;
 import com.library_system.book_management.modules.authors.mappers.AuthorMapper;
 import com.library_system.book_management.modules.authors.services.AuthorService;
-import com.library_system.book_management.modules.books.dtos.CreateBookDto;
-import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
-import com.library_system.book_management.modules.books.dtos.UpdateBookDto;
-import com.library_system.book_management.modules.books.entities.Book;
-import com.library_system.book_management.modules.books.mappers.BookMapper;
-import com.library_system.book_management.modules.books.repositories.BookRepository;
+import com.library_system.book_management.modules.dtos.CreateBookDto;
+import com.library_system.book_management.modules.dtos.RecoveryBookDto;
+import com.library_system.book_management.modules.dtos.UpdateBookDto;
+import com.library_system.book_management.modules.entities.Book;
+import com.library_system.book_management.modules.mappers.BookMapper;
+import com.library_system.book_management.modules.repositories.BookRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
