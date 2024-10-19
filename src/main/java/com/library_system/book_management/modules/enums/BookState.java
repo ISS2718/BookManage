@@ -1,4 +1,4 @@
-package com.library_system.book_management.modules.books.enums;
+package com.library_system.book_management.modules.enums;
 
 public enum BookState {
     AVAILABLE,

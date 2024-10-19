@@ -1,7 +1,7 @@
-package com.library_system.book_management.modules.books.dtos;
+package com.library_system.book_management.modules.dtos;
 
 import com.library_system.book_management.modules.authors.dtos.CreateAuthorDto;
-import com.library_system.book_management.modules.books.enums.BookState;
+import com.library_system.book_management.modules.enums.BookState;
 import jakarta.annotation.Nullable;
 
 import java.util.List;

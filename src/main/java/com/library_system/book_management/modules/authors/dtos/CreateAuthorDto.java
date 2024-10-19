@@ -1,6 +1,6 @@
 package com.library_system.book_management.modules.authors.dtos;
 
-import com.library_system.book_management.modules.books.dtos.CreateBookDto;
+import com.library_system.book_management.modules.dtos.CreateBookDto;
 import jakarta.annotation.Nullable;
 
 import java.time.LocalDate;

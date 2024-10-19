@@ -1,9 +1,9 @@
-package com.library_system.book_management.modules.books.controllers;
+package com.library_system.book_management.modules.controllers;
 
-import com.library_system.book_management.modules.books.dtos.CreateBookDto;
-import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
-import com.library_system.book_management.modules.books.dtos.UpdateBookDto;
-import com.library_system.book_management.modules.books.services.BookService;
+import com.library_system.book_management.modules.dtos.CreateBookDto;
+import com.library_system.book_management.modules.dtos.RecoveryBookDto;
+import com.library_system.book_management.modules.dtos.UpdateBookDto;
+import com.library_system.book_management.modules.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

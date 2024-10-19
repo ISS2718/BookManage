@@ -1,10 +1,10 @@
-package com.library_system.book_management.modules.books.mappers;
+package com.library_system.book_management.modules.mappers;
 
 import com.library_system.book_management.modules.authors.entities.Author;
 import com.library_system.book_management.modules.authors.mappers.AuthorMapper;
 import com.library_system.book_management.modules.authors.services.AuthorService;
-import com.library_system.book_management.modules.books.dtos.RecoveryBookDto;
-import com.library_system.book_management.modules.books.entities.Book;
+import com.library_system.book_management.modules.dtos.RecoveryBookDto;
+import com.library_system.book_management.modules.entities.Book;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
